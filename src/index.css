@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+  Farmacare design tokens
+  Palette is taken from the farm itself:
+  napier = Napier-grass green, tag = yellow livestock ear tag, murram = red soil,
+  rift = water and sky, chalk = lime-washed wall, humus = dark soil.
+*/
+@theme {
+  --font-display: "Bricolage Grotesque Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Figtree Variable", ui-sans-serif, system-ui, sans-serif;
+
+  --color-chalk: #f3f5ef;
+  --color-humus: #24301f;
+  --color-muted: #566150;
+  --color-line: #d3dacb;
+
+  --color-napier: #3f7d2c;
+  --color-napier-dark: #2d5e1f;
+  --color-napier-tint: #e3eeda;
+
+  --color-tag: #f5c518;
+  --color-sun-tint: #fbf0c4;
+  --color-sun-ink: #6b5200;
+
+  --color-murram: #b23a2b;
+  --color-murram-dark: #8f2d21;
+  --color-murram-tint: #f8e4e0;
+
+  --color-rift: #25688a;
+  --color-rift-tint: #dcebf3;
+}
+
+html {
+  background: var(--color-chalk);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--color-chalk);
+  color: var(--color-humus);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.012em;
+  line-height: 1.15;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-rift);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes settle {
+  from { transform: rotate(-7deg) translateY(-6px); opacity: 0; }
+  to { transform: rotate(0) translateY(0); opacity: 1; }
+}
+.tag-settle { animation: settle 520ms cubic-bezier(.2,.8,.2,1) both; transform-origin: 14px 50%; }
+

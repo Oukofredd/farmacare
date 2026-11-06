@@ -1,0 +1,25 @@
+export interface Term { id: string; term: string; meaning: string }
+
+export const GLOSSARY: Term[] = [
+  { id: 'ai', term: 'Artificial insemination (AI)', meaning: 'Placing semen from a chosen male into a female by a trained person, without natural mating.' },
+  { id: 'biosecurity', term: 'Biosecurity', meaning: 'Practices that keep disease out of the farm and stop it spreading, such as quarantine and cleaning.' },
+  { id: 'bcs', term: 'Body condition score', meaning: 'A simple score of how fat or thin an animal is, judged by looking and feeling over the bones.' },
+  { id: 'candling', term: 'Candling', meaning: 'Shining a bright light through an egg to see whether an embryo is growing.' },
+  { id: 'colostrum', term: 'Colostrum', meaning: 'The first, antibody-rich milk a mother produces after birth.' },
+  { id: 'concentrate', term: 'Concentrate', meaning: 'Energy- or protein-rich feed given in small amounts to supplement forage, such as dairy meal.' },
+  { id: 'dam', term: 'Dam', meaning: 'The mother of an animal.' },
+  { id: 'dry-off', term: 'Dry-off', meaning: 'Stopping milking before the next birth so the udder can rest.' },
+  { id: 'forage', term: 'Forage', meaning: 'Plant feed such as grass, hay, silage and fodder shrubs.' },
+  { id: 'gestation', term: 'Gestation', meaning: 'Pregnancy, from mating to birth.' },
+  { id: 'grade', term: 'Grade animal', meaning: 'A crossbred animal that has been mated repeatedly to purebred sires of one breed, so it resembles that breed.' },
+  { id: 'heat', term: 'Heat (oestrus)', meaning: 'The short period when a female is ready to mate and can become pregnant.' },
+  { id: 'heterosis', term: 'Heterosis (hybrid vigour)', meaning: 'The extra performance sometimes seen in crossbred offspring compared with their parents.' },
+  { id: 'incubation', term: 'Incubation', meaning: 'The time an egg is kept warm until it hatches. About 21 days for chickens.' },
+  { id: 'mastitis', term: 'Mastitis', meaning: 'Infection and inflammation of the udder.' },
+  { id: 'notifiable', term: 'Notifiable disease', meaning: 'A serious disease that must be reported to the veterinary authorities when suspected.' },
+  { id: 'pedigree', term: 'Pedigree', meaning: 'A record of an animal\'s ancestors.' },
+  { id: 'sire', term: 'Sire', meaning: 'The father of an animal.' },
+  { id: 'weaning', term: 'Weaning', meaning: 'Moving young animals from milk to solid feed.' },
+  { id: 'withdrawal', term: 'Withdrawal period', meaning: 'The time after a treatment when milk, meat or eggs must not be sold or eaten.' },
+  { id: 'zoonosis', term: 'Zoonosis', meaning: 'A disease that can pass between animals and people, such as brucellosis.' },
+]
