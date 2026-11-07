@@ -6,6 +6,7 @@ import { CONTENT_STATUS } from '../data/sources'
 /* ---------- icons ---------- */
 const PATHS: Record<string, string> = {
   user: 'M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10z',
+  printer: 'M6 9V3h12v6M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v7H6zM18 12h.01',
   home: 'M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z',
   tag: 'M7 3h10a2 2 0 0 1 2 2v9a7 7 0 0 1-14 0V5a2 2 0 0 1 2-2zM12 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z',
   calendar: 'M7 3v3M17 3v3M4 8h16M5 5h14a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z',

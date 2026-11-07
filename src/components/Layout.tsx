@@ -75,7 +75,7 @@ export default function Layout() {
         Skip to content
       </a>
 
-      <aside className="sticky top-0 hidden h-dvh w-64 shrink-0 flex-col gap-1 overflow-y-auto border-r border-line bg-white p-4 md:flex">
+      <aside className="app-print-hidden sticky top-0 hidden h-dvh w-64 shrink-0 flex-col gap-1 overflow-y-auto border-r border-line bg-white p-4 md:flex">
         <div className="mb-4 px-2"><Brand /></div>
         {MAIN.map((n) => (
           <NavLink
@@ -109,7 +109,7 @@ export default function Layout() {
       </aside>
 
       <div className="flex min-w-0 flex-1 flex-col">
-        <header className="sticky top-0 z-20 flex items-center justify-between bg-napier px-4 pb-2.5 pt-[calc(0.625rem+env(safe-area-inset-top))] md:hidden">
+        <header className="app-print-hidden sticky top-0 z-20 flex items-center justify-between bg-napier px-4 pb-2.5 pt-[calc(0.625rem+env(safe-area-inset-top))] md:hidden">
           <Brand light />
           <div className="flex items-center gap-2">
             {member ? (
@@ -127,7 +127,7 @@ export default function Layout() {
         </header>
 
         {!online && (
-          <div className="bg-sun-tint px-4 py-2 text-center text-sm font-semibold text-sun-ink md:hidden" role="status">
+          <div className="app-print-hidden bg-sun-tint px-4 py-2 text-center text-sm font-semibold text-sun-ink md:hidden" role="status">
             You are offline. Your records and saved guides still work.
           </div>
         )}
@@ -136,7 +136,7 @@ export default function Layout() {
           <Outlet />
         </main>
 
-        <nav aria-label="Main" className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
+        <nav aria-label="Main" className="app-print-hidden fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white pb-[env(safe-area-inset-bottom)] md:hidden">
           <ul className="grid grid-cols-5">
             {BOTTOM.map((n) => {
               const active = n.match(pathname)

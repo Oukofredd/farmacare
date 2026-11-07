@@ -233,10 +233,12 @@ export default function AnimalProfile() {
   const form = adding && <EventForm key={`${adding.initial}-${adding.linkedId}`} animal={a} types={adding.types} initial={adding.initial} linkedId={adding.linkedId} onDone={() => setAdding(null)} />
 
   return (
-    <div>
+    <>
+    <div className="animal-profile-screen">
       <PageHeader title={<span className="flex flex-wrap items-center gap-3"><EarTag tag={a.tag} size="lg" animate />{a.name && <span>{a.name}</span>}</span>}
         back={{ to: '/animals', label: 'Animal register' }}
-        subtitle={`${a.count > 1 ? `Group of ${a.count}. ` : ''}${breedLabel(a.breedId)}, ${sp.name.replace(/s$/, '').toLowerCase()}, ${ageText(a.dob, today)}${a.dob && a.dobEstimated ? ' (estimated)' : ''}`} />
+        subtitle={`${a.count > 1 ? `Group of ${a.count}. ` : ''}${breedLabel(a.breedId)}, ${sp.name.replace(/s$/, '').toLowerCase()}, ${ageText(a.dob, today)}${a.dob && a.dobEstimated ? ' (estimated)' : ''}`}
+        action={<Button variant="secondary" icon="printer" onClick={() => window.print()}>Print profile</Button>} />
       <div className="-mt-2 mb-5 flex flex-wrap gap-1.5">
         <Badge tone={gen.tone}>{gen.text}</Badge>
         {a.status !== 'active' && <Badge tone="neutral">{a.status === 'sold' ? 'Sold' : 'Deceased'}</Badge>}
@@ -335,5 +337,47 @@ export default function AnimalProfile() {
         </div>
       )}
     </div>
+    <article className="animal-profile-print" aria-label="Printable animal profile">
+      <header className="mb-6 border-b pb-4">
+        <p className="text-sm font-semibold">Farmacare · Animal record</p>
+        <h1 className="mt-1 text-3xl font-bold">{a.name ? `${a.name} — ${a.tag}` : a.tag}</h1>
+        <p>Printed {formatDay(today)}{db.farm.name ? ` · ${db.farm.name}` : ''}{db.farm.county ? ` · ${db.farm.county} County` : ''}</p>
+      </header>
+      <section className="mb-6">
+        <h2 className="mb-2 text-xl font-bold">Animal details</h2>
+        <dl className="grid grid-cols-2 gap-x-6 gap-y-2">
+          <div><dt className="font-semibold">Tag</dt><dd>{a.tag}</dd></div>
+          <div><dt className="font-semibold">Name</dt><dd>{a.name || 'Not recorded'}</dd></div>
+          <div><dt className="font-semibold">Species</dt><dd>{sp.name.replace(/s$/, '')}</dd></div>
+          <div><dt className="font-semibold">Breed</dt><dd>{breedLabel(a.breedId)}</dd></div>
+          <div><dt className="font-semibold">Sex</dt><dd>{a.sex === 'unknown' ? 'Unknown' : a.sex}</dd></div>
+          <div><dt className="font-semibold">Group count</dt><dd>{a.count}</dd></div>
+          <div><dt className="font-semibold">Date of birth</dt><dd>{a.dob ? `${formatDate(a.dob)}${a.dobEstimated ? ' (estimated)' : ''}` : 'Unknown'}</dd></div>
+          <div><dt className="font-semibold">Source</dt><dd>{SOURCE_LABEL[a.source]}{a.sourceDetail ? ` — ${a.sourceDetail}` : ''}</dd></div>
+          <div><dt className="font-semibold">Sire</dt><dd>{a.sireTag || 'Unknown'}</dd></div>
+          <div><dt className="font-semibold">Dam</dt><dd>{a.damTag || 'Unknown'}</dd></div>
+          <div><dt className="font-semibold">Genetic status</dt><dd>{GENETIC_LABEL[a.geneticStatus].text}</dd></div>
+          <div><dt className="font-semibold">Record status</dt><dd>{a.status}</dd></div>
+        </dl>
+        {a.notes && <p className="mt-3 whitespace-pre-wrap"><b>Notes:</b> {a.notes}</p>}
+      </section>
+      <section>
+        <h2 className="mb-2 text-xl font-bold">History</h2>
+        {events.length === 0 ? <p>No events recorded.</p> : (
+          <ol className="space-y-3">
+            {events.map((ev) => (
+              <li key={ev.id} className="animal-print-event border-b pb-2">
+                <p className="font-bold">{formatDate(ev.date)} · {EVENT_LABEL[ev.type]}: {ev.title}</p>
+                {ev.details && <p>{ev.details}</p>}
+                <p className="text-sm">
+                  {[ev.professional && `Recorded by ${ev.professional}`, ev.value !== undefined && `Value ${ev.value}${ev.unit ? ` ${ev.unit}` : ''}`, ev.partnerTag && `Partner ${ev.partnerTag}`, ev.expectedDue && `Expected date ${formatDate(ev.expectedDue)}`, ev.nextDue && `Next due ${formatDate(ev.nextDue)}`, ev.withdrawalDays && `Withdrawal ${ev.withdrawalDays} days${ev.withdrawalFor ? ` (${ev.withdrawalFor})` : ''}`, ev.pregnancy && `Pregnancy ${ev.pregnancy}`, ev.method && `Method ${ev.method}`].filter(Boolean).join(' · ') || 'No additional details recorded.'}
+                </p>
+              </li>
+            ))}
+          </ol>
+        )}
+      </section>
+    </article>
+    </>
   )
 }

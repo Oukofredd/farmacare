@@ -58,6 +58,18 @@ h1, h2, h3 {
   outline-offset: 2px;
 }
 
+.animal-profile-print { display: none; }
+
+@media print {
+  @page { margin: 14mm; }
+  html, body { background: white !important; color: #111 !important; }
+  .app-print-hidden, .animal-profile-screen { display: none !important; }
+  .animal-profile-print { display: block !important; color: #111 !important; font: 11pt/1.45 Arial, sans-serif; }
+  .animal-profile-print * { color: #111 !important; box-shadow: none !important; }
+  #main { max-width: none !important; margin: 0 !important; padding: 0 !important; }
+  .animal-print-event { break-inside: avoid; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation: none !important;
