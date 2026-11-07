@@ -17,7 +17,9 @@ createRoot(document.getElementById('root')!).render(
 // Offline support: cache the app shell and static assets once the page has loaded.
 if ('serviceWorker' in navigator && import.meta.env.PROD) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {
+    navigator.serviceWorker.register(
+      `${import.meta.env.BASE_URL}sw.js`
+    ).catch(() => {
       /* offline caching is a bonus; the app still works online */
     })
   })
